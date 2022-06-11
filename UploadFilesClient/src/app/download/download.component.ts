@@ -11,12 +11,14 @@ export class DownloadComponent implements OnInit {
   message: string;
   progress: number;
   @Input() fileUrl: string;
-  
+
   constructor(private fileService: FileService) {}
+ // console.log(this.fileUrl);
   
     ngOnInit(): void {}
 
     download = () => {
+      console.log(this.fileUrl)
       this.fileService.download(this.fileUrl).subscribe((event) => {
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round((100 * event.loaded) / event.total);

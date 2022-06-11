@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   users: User[] = [];
   response: {dbPath: ''};
   photos: string[] = [];
+  imageName: string ='';
 
   constructor(private http: HttpClient, private fileService: FileService){}
 
@@ -33,8 +34,10 @@ export class AppComponent implements OnInit {
 
   onCreate = () => {
     this.user = {
-      name: this.name,
-      address: this.address,
+      // name: this.name,
+      // address: this.address,
+      name: 'Felix Battig',
+      address: '123 aaaa street',
       imgPath: this.response.dbPath
     }
 
@@ -58,13 +61,16 @@ export class AppComponent implements OnInit {
 
   returnToCreate = () => {
     this.isCreate = true;
-    this.name = '';
-    this.address = '';
+   // this.name = '';
+   // this.address = '';
     this.getPhotos();
   }
 
   uploadFinished = (event) => { 
     this.response = event; 
+   
+      this.imageName = this.response.dbPath ;
+    
   }
 
   public createImgPath = (serverPath: string) => { 

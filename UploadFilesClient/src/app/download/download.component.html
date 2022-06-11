@@ -1,8 +1,13 @@
 <div class="row mb-3 mt-3">
-  <div class="col-md-3">
-    <button type="button" class="btn btn-success" (click)="download()">Download File</button>
-  </div>
+  <!-- <div class="col-md-3" m-0 p-0> -->
+    <button type="button" class="btn btn-success" 
+    style="border-color: red;border-width: 1px;"
+    
+    
+    (click)="download()">Download</button>
+  <!-- </div> -->
   <div class="col-md-4">
+    <!-- {{fileUrl}} -->
     <span class="download" *ngIf="progress > 0">
       {{progress}}%
     </span>
