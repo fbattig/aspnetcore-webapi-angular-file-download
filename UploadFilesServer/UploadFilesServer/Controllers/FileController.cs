@@ -83,7 +83,15 @@ namespace UploadFilesServer.Controllers
         {
             return fileName.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase)
                    || fileName.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase)
-                   || fileName.EndsWith(".png", StringComparison.OrdinalIgnoreCase);
+                   || fileName.EndsWith(".png", StringComparison.OrdinalIgnoreCase)
+                   || fileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase)
+                   || fileName.EndsWith(".doc", StringComparison.OrdinalIgnoreCase)
+                   || fileName.EndsWith(".docs", StringComparison.OrdinalIgnoreCase)
+                   || fileName.EndsWith(".xls", StringComparison.OrdinalIgnoreCase)
+                   || fileName.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase)
+                   || fileName.EndsWith(".txt", StringComparison.OrdinalIgnoreCase)
+
+                   ;
         }
 
         private string GetContentType(string path)

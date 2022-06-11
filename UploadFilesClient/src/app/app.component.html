@@ -1,5 +1,6 @@
 <article class="container">
-  <section class="create" *ngIf="isCreate">
+  <!-- <section class="create" *ngIf="isCreate"> -->
+    <section class="create">
     <h1>Create User</h1>
     <form>
       <div class="mb-3">
@@ -22,32 +23,40 @@
     <div class="photos" *ngIf="photos.length > 0">
       <h2>Available photos</h2>
       <div *ngFor="let photo of photos" class="photo">
-          <img [src]="createImgPath(photo)" style="width:60px; height:60px;">
+          <!-- <img [src]="createImgPath(photo)" style="width:60px; height:60px;"> -->
+          {{photo}}
           <app-download [fileUrl]="photo"></app-download>
       </div>
   </div>
   </section>
 
-  <section class="users" *ngIf="!isCreate">
+  <!-- <section class="users" *ngIf="!isCreate"></section> -->
+  <section class="users">
     <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col">Image</th>
           <th scope="col">Name</th>
           <th scope="col">Address</th>
+          <th scope="col">Download</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
-          <td><img [src]="createImgPath(user.imgPath)" alt="profile picture" style="width:60px; height:60px;"></td>
+          <!-- <td><img [src]="createImgPath(user.imgPath)" alt="profile picture" style="width:60px; height:60px;"></td> -->
+          <td>{{user.imgPath}}</td>
           <td>{{user.name}}</td>
           <td>{{user.address}}</td>
+          <td>
+            <button type="button" class="btn btn-success" >Download File</button>
+          </td>
         </tr>
       </tbody>
     </table>
     <div class="row">
       <div class="offset-md-10 col-md-2">
         <button type="button" class="btn btn-primary" (click)="returnToCreate()">New User</button>
+
       </div>
     </div>
   </section>

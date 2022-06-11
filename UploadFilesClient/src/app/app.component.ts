@@ -10,7 +10,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  isCreate: boolean;
+  isCreate: boolean = false;
   name: string;
   address: string;
   user: UserToCreate;
@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.isCreate = true;
     this.getPhotos();
+    this.getUsers();
   }
 
   private getPhotos = () => {
