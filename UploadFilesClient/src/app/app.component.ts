@@ -18,12 +18,13 @@ export class AppComponent implements OnInit {
   response: {dbPath: ''};
   photos: string[] = [];
   imageName: string ='';
+  filename: string='';
 
   constructor(private http: HttpClient, private fileService: FileService){}
 
   ngOnInit(){
     this.isCreate = true;
-    this.getPhotos();
+  //  this.getPhotos();
     this.getUsers();
   }
 
@@ -45,7 +46,7 @@ export class AppComponent implements OnInit {
     .subscribe({
       next: _ => {
         this.getUsers();
-        this.isCreate = false;
+     //   this.isCreate = false;
       },
       error: (err: HttpErrorResponse) => console.log(err)
     });
@@ -70,6 +71,8 @@ export class AppComponent implements OnInit {
     this.response = event; 
    
       this.imageName = this.response.dbPath ;
+      this.filename = this.imageName.split('\\').pop();
+    //  var filename = location.pathname.substr(location.pathname.lastIndexOf("/")+1);
     
   }
 

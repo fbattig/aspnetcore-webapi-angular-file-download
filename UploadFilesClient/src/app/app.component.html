@@ -1,11 +1,11 @@
 <article class="container">
   <section class="users">
     <div class="row">
-      <div class="col-8">
+      <div class="col-10">
         <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
-      {{imageName}}
+          {{filename}}
       </div>
-      <div class="col-4">
+      <div class="col-2">
         <button type="button" class="btn btn-primary" (click)="onCreate()">Create </button>
       </div>
     </div>
@@ -13,18 +13,19 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">Image</th>
-          <th scope="col">Name</th>
-          <th scope="col">Address</th>
+          <th scope="col">File</th>
+          <!-- <th scope="col">Name</th>
+          <th scope="col">Address</th> -->
           <th scope="col">Download</th>
          
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
-          <td>{{user.imgPath}}</td>
-          <td>{{user.name}}</td>
-          <td>{{user.address}}</td>
+          <td>{{(user.imgPath.split('\\').pop()).trim()}}</td>
+          <!-- <td>{{user.name}}</td> -->
+          <!-- <td>{{user.name}}</td>
+          <td>{{user.address}}</td> -->
           <td > <app-download [fileUrl]="user.imgPath"></app-download></td>
         </tr>
       </tbody>

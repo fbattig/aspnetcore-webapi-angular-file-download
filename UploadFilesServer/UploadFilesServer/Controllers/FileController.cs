@@ -97,7 +97,7 @@ namespace UploadFilesServer.Controllers
         private string GetContentType(string path)
         {
             var provider = new FileExtensionContentTypeProvider();
-            string contentType;
+            string? contentType;
 
             if (!provider.TryGetContentType(path, out contentType))
             {

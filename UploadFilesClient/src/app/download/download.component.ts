@@ -20,7 +20,7 @@ export class DownloadComponent implements OnInit {
     download = () => {
       console.log(this.fileUrl)
       this.fileService.download(this.fileUrl).subscribe((event) => {
-        if (event.type === HttpEventType.UploadProgress)
+        if (event.type === HttpEventType.DownloadProgress)
           this.progress = Math.round((100 * event.loaded) / event.total);
         else if (event.type === HttpEventType.Response) {
           this.message = 'Download success.';
@@ -35,7 +35,8 @@ export class DownloadComponent implements OnInit {
       a.setAttribute('style', 'display:none;');
       document.body.appendChild(a);
       a.download = this.fileUrl;
-      a.href = URL.createObjectURL(downloadedFile);
+      a.href = URL.createObjectURL(downloadedFile) ;
+      a.setAttribute("download",this.fileUrl.split('\\').pop())
       a.target = '_blank';
       a.click();
       document.body.removeChild(a);
